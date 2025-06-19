@@ -3,12 +3,21 @@ plugins {
 }
 
 android {
+<<<<<<< HEAD
     namespace = "vn.edu.tlu.group23.mybakeryapp"
     compileSdk = 35
 
     defaultConfig {
         applicationId = "vn.edu.tlu.group23.mybakeryapp"
         minSdk = 30
+=======
+    namespace = "vn.edu.tlu.cse.ht1.thuy.myappcake"
+    compileSdk = 35
+
+    defaultConfig {
+        applicationId = "vn.edu.tlu.cse.ht1.thuy.myappcake"
+        minSdk = 28
+>>>>>>> thuy
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
