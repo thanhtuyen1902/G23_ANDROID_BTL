@@ -19,11 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-<<<<<<< HEAD
 rootProject.name = "MyBakeryApp"
 include(":app")
-=======
-rootProject.name = "MyAppCake"
-include(":app")
- 
->>>>>>> thuy
