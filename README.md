@@ -50,6 +50,8 @@
 - **UI**: XML Layout
 - **Lưu session / phân quyền**: SharedPreferences
 
+---
+
 ## 📬Thông tin
 - 👨‍💻 Nhóm phát triển: Nhóm 23
 
