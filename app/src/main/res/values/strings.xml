@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">MyBakeryApp</string>
+
+    <string-array name="cake_types_array">
+        <item>Bánh kem</item>
+        <item>Bánh lạnh</item>
+        <item>Bánh ngọt</item>
+        <item>Cupcake</item>
+        <item>Bánh mì</item>
+        <item>Khác</item>
+    </string-array>
+    <string name="add_product_description">Thêm sản phẩm mới</string>
 </resources>
