@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="24dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Thêm ca làm việc mới"
+                android:textColor="#000000"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/btnClose"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintHorizontal_bias="0" />
+
+            <ImageView
+                android:id="@+id/btnClose"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_close"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:contentDescription="Đóng" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tên ca làm việc"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp"/>
+
+        <EditText
+            android:id="@+id/edtShiftName"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Nhập tên ca"
+            android:background="@drawable/rounded_edittext"
+            android:textSize="20sp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:layout_marginBottom="16dp"
+            android:inputType="textCapSentences"
+            android:autofillHints="" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Giờ bắt đầu"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp"/>
+
+        <EditText
+            android:id="@+id/edtStartTime"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Chọn giờ bắt đầu"
+            android:background="@drawable/rounded_edittext"
+            android:textSize="20sp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:layout_marginBottom="16dp"
+            android:focusable="false"
+            android:clickable="true"
+            android:drawableEnd="@drawable/ic_clock"
+            android:drawablePadding="8dp"
+            android:autofillHints=""
+            android:inputType="none" /> <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Giờ kết thúc"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp"/>
+
+        <EditText
+            android:id="@+id/edtEndTime"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/rounded_edittext"
+            android:hint="Chọn giờ kết thúc"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textSize="20sp"
+            android:focusable="false"
+            android:clickable="true"
+            android:drawableEnd="@drawable/ic_clock"
+            android:drawablePadding="8dp"
+            android:autofillHints=""
+            android:inputType="none" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSaveShift"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Thêm ca làm việc"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#E87D7D"
+            android:background="@drawable/buttonaddshift_task" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
+
+    <!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--    android:layout_width="match_parent"-->
+    <!--    android:layout_height="wrap_content"-->
+    <!--    android:orientation="vertical"-->
+    <!--    android:background="@android:color/white"-->
+    <!--    android:padding="24dp">-->
+
+    <!--    &lt;!&ndash; Tiêu đề + nút đóng &ndash;&gt;-->
+    <!--    <RelativeLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginBottom="12dp">-->
+
+    <!--        <TextView-->
+    <!--            android:id="@+id/tvTitle"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:text="Thêm ca làm việc mới"-->
+    <!--            android:layout_marginTop="5dp"-->
+    <!--            android:textColor="#000000"-->
+    <!--            android:textSize="24sp"-->
+    <!--            android:textStyle="bold" />-->
+
+    <!--        <ImageView-->
+    <!--            android:id="@+id/btnClose"-->
+    <!--            android:layout_width="45dp"-->
+    <!--            android:layout_height="45dp"-->
+    <!--            android:layout_alignParentEnd="true"-->
+    <!--            android:layout_marginEnd="4dp"-->
+    <!--            android:layout_marginBottom="8dp"-->
+    <!--            android:contentDescription="Đóng"-->
+    <!--            android:src="@drawable/ic_close" />-->
+    <!--    </RelativeLayout>-->
+
+    <!--    &lt;!&ndash; Tên ca &ndash;&gt;-->
+    <!--    <TextView-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="39dp"-->
+    <!--        android:layout_marginTop="20dp"-->
+    <!--        android:text="Tên ca làm việc"-->
+    <!--        android:textSize="20sp" />-->
+    <!--    &lt;!&ndash; Tên ca &ndash;&gt;-->
+    <!--    <EditText-->
+    <!--        android:id="@+id/edtShiftName"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:hint="Nhập tên ca"-->
+    <!--        android:background="@drawable/rounded_edittext"-->
+    <!--        android:textSize="20sp"-->
+    <!--        android:padding="12dp"-->
+    <!--        android:layout_marginTop="4dp"-->
+    <!--        android:layout_marginBottom="12dp"/>-->
+
+    <!--    &lt;!&ndash; Giờ bắt đầu &ndash;&gt;-->
+    <!--    <TextView-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="40dp"-->
+    <!--        android:layout_marginTop="12dp"-->
+    <!--        android:text="Giờ bắt đầu"-->
+    <!--        android:textSize="20sp" />-->
+
+    <!--    <EditText-->
+    <!--        android:id="@+id/edtStartTime"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:hint="Chọn giờ bắt đầu"-->
+    <!--        android:background="@drawable/rounded_edittext"-->
+    <!--        android:textSize="20sp"-->
+    <!--        android:padding="12dp"-->
+    <!--        android:layout_marginBottom="12dp"/>-->
+
+    <!--    &lt;!&ndash; Giờ kết thúc &ndash;&gt;-->
+    <!--    <TextView-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="38dp"-->
+    <!--        android:layout_marginTop="12dp"-->
+    <!--        android:text="Giờ kết thúc"-->
+    <!--        android:textSize="20sp" />-->
+    <!--    &lt;!&ndash; Giờ kết thúc &ndash;&gt;-->
+
+    <!--    <EditText-->
+    <!--        android:id="@+id/edtEndTime"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginBottom="24dp"-->
+    <!--        android:background="@drawable/rounded_edittext"-->
+    <!--        android:hint="Chọn giờ kết thúc"-->
+    <!--        android:padding="12dp"-->
+    <!--        android:textSize="20sp" />-->
+
+    <!--    <androidx.appcompat.widget.AppCompatButton-->
+    <!--        android:id="@+id/btnSaveShift"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:text="Thêm ca làm việc"-->
+    <!--        android:textSize="20sp"-->
+    <!--        android:textStyle="bold"-->
+    <!--        android:textAllCaps="false"-->
+    <!--        android:textColor="#FFFFFF"-->
+    <!--        android:backgroundTint="#E87D7D"-->
+    <!--        android:background="@drawable/buttonaddshift_task" />-->
+    <!--</LinearLayout>-->

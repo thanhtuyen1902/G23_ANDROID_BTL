@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="24dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:id="@+id/dialogTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Thêm công việc mới"
+                android:textColor="@android:color/black"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/closeButton"
+                app:layout_constraintHorizontal_bias="0" />
+
+            <ImageView
+                android:id="@+id/closeButton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_close"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:ignore="ContentDescription" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tên công việc"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp"/>
+
+        <EditText
+            android:id="@+id/editTextTaskName"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/rounded_edittext"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textSize="20sp"
+            android:layout_marginBottom="16dp"
+            android:hint="Nhập tên công việc"
+            android:inputType="text"
+            android:autofillHints="" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mô tả"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp"/>
+
+        <EditText
+            android:id="@+id/editTextDescription"
+            android:layout_width="match_parent"
+            android:layout_height="96dp"
+            android:background="@drawable/rounded_edittext"
+            android:gravity="top|start"
+            android:padding="12dp"
+            android:textSize="20sp"
+            android:layout_marginBottom="16dp"
+            android:hint="Nhập mô tả công việc"
+            android:inputType="textMultiLine"
+            android:autofillHints="" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Phân công cho"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp"/>
+
+        <Spinner
+            android:id="@+id/spinnerAssignTo"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/rounded_edittext"
+            android:layout_marginBottom="16dp"
+            android:textSize="20sp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:spinnerMode="dropdown" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Độ ưu tiên"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp"/>
+
+        <Spinner
+            android:id="@+id/spinnerPriority"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/rounded_edittext"
+            android:layout_marginBottom="24dp"
+            android:textSize="20sp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:spinnerMode="dropdown" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSaveShift"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Thêm công việc"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#E87D7D"
+            android:background="@drawable/buttonaddshift_task" />
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
