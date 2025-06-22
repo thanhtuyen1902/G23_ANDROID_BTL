@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,6 +33,7 @@ public class TaskActivity extends AppCompatActivity {
     private ShiftAdapter adapter;
     private List<Shift> shiftList;
     Button btnAddShift;
+    ImageView backArrow;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +52,7 @@ public class TaskActivity extends AppCompatActivity {
         // Định vị RecyclerView
         recyclerView = findViewById(R.id.recyclerViewShift);
         btnAddShift = findViewById(R.id.btnAddShift);
-
+        backArrow = findViewById(R.id.backArrow);
         // Load danh sách ca ban đầu
         loadShifts();
 
@@ -63,6 +65,8 @@ public class TaskActivity extends AppCompatActivity {
             dialog.show();
         });
 
+        // Quay lại
+        backArrow.setOnClickListener(v -> finish());
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.rootConstraintLayout), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(0, systemBars.top, 0, systemBars.bottom);
