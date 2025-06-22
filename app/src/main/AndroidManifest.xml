@@ -13,6 +13,12 @@
         android:theme="@style/Theme.MyBakeryApp"
         tools:targetApi="31">
         <activity
+            android:name=".activities.EmployeeTasksActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.ShiftDetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.TaskActivity"
             android:exported="false" />
         <activity
@@ -21,14 +27,12 @@
         <activity
             android:name=".activities.AddEditProductActivity"
             android:exported="false" />
-
         <activity
             android:name=".activities.EmployeeActivity"
             android:exported="false" />
         <activity
             android:name=".activities.HomeActivity"
             android:exported="false" />
-
         <activity
             android:name=".activities.LoginActivity"
             android:exported="true">

@@ -1,10 +1,153 @@
-<?xml version="1.0" encoding="utf-8"?>
+<!--<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:id="@+id/rootConstraintLayout"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:background="#FFF5F7">-->
+
+<!--    <fragment-->
+<!--        android:id="@+id/headerFragment"-->
+<!--        android:name="vn.edu.tlu.group23.mybakeryapp.fragments.HeaderFragment"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="101dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/tvTitle"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Danh sách ca làm việc"-->
+<!--        android:textSize="23sp"-->
+<!--        android:textStyle="bold"-->
+<!--        android:layout_margin="16dp"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/headerFragment"-->
+<!--        app:layout_constraintStart_toStartOf="parent" />-->
+
+<!--    <SearchView-->
+<!--        android:id="@+id/searchView"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginHorizontal="16dp"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:background="@drawable/rounded_edittext"-->
+<!--        android:iconifiedByDefault="false"-->
+<!--        android:queryHint="Tìm kiếm ca làm việc"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/tvTitle" />-->
+
+<!--    <androidx.appcompat.widget.AppCompatButton-->
+<!--        android:id="@+id/btnAddShift"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_margin="16dp"-->
+<!--        android:layout_marginTop="24dp"-->
+<!--        android:background="@drawable/buttonaddshift_task"-->
+<!--        android:text="+ Thêm ca làm việc mới"-->
+<!--        android:textAllCaps="false"-->
+<!--        android:textColor="#FFF"-->
+<!--        android:textSize="20sp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/searchView" />-->
+
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/recyclerViewShift"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:layout_marginHorizontal="16dp"-->
+<!--        android:clipToPadding="false"-->
+<!--        android:paddingBottom="12dp"-->
+<!--        android:nestedScrollingEnabled="true"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/btnAddShift"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent" />-->
+<!--</androidx.constraintlayout.widget.ConstraintLayout>-->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/rootConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.TaskActivity">
+    android:background="#FFF5F7">
+
+    <fragment
+        android:id="@+id/headerFragment"
+        android:name="vn.edu.tlu.group23.mybakeryapp.fragments.HeaderFragment"
+        android:layout_width="0dp"
+        android:layout_height="101dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="Danh sách ca làm việc"
+        android:textSize="23sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/headerFragment" />
+
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/rounded_edittext"
+        android:iconifiedByDefault="false"
+        android:queryHint="Tìm kiếm ca làm việc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnAddShift"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="14dp"
+        android:background="@drawable/buttonaddshift_task"
+        android:text="+ Thêm ca làm việc mới"
+        android:textAllCaps="false"
+        android:textColor="#FFF"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/searchView" />
+
+    <TextView
+        android:id="@+id/tvspace"
+        android:layout_width="113dp"
+        android:layout_height="15dp"
+        android:layout_margin="5dp"
+        android:layout_marginTop="5dp"
+        android:text=""
+        android:textSize="23sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnAddShift" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewShift"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="16dp"
+        android:clipToPadding="false"
+        android:nestedScrollingEnabled="true"
+        android:paddingBottom="12dp"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvspace" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

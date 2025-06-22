@@ -56,6 +56,8 @@ public class HomeActivity extends AppCompatActivity {
         cardManageTasks.setOnClickListener(v -> {
             Toast.makeText(HomeActivity.this, "Chức năng Quản lý Công việc !", Toast.LENGTH_SHORT).show();
             // TODO: Chuyển đến TaskManagementActivity
+            Intent intent = new Intent(HomeActivity.this, TaskActivity.class);
+            startActivity(intent);
         });
 
         cardStatistics.setOnClickListener(v -> {
