@@ -67,28 +67,6 @@ public class EmployeeDAO {
         return db.delete("Employee", "maNV = ?", new String[]{maNV});
     }
 
-    // Tìm kiếm theo mã hoặc tên
-    public List<Employee> searchEmployees(String keyword) {
-        List<Employee> list = new ArrayList<>();
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
-        Cursor cursor = db.rawQuery(
-                "SELECT * FROM Employee WHERE maNV LIKE ? OR tenNV LIKE ?",
-                new String[]{"%" + keyword + "%", "%" + keyword + "%"}
-        );
-        while (cursor.moveToNext()) {
-            Employee emp = new Employee();
-            emp.setMaNV(cursor.getString(cursor.getColumnIndexOrThrow("maNV")));
-            emp.setTenNV(cursor.getString(cursor.getColumnIndexOrThrow("tenNV")));
-            emp.setSoDienThoai(cursor.getString(cursor.getColumnIndexOrThrow("soDienThoai")));
-            emp.setChucVu(cursor.getString(cursor.getColumnIndexOrThrow("chucVu")));
-            emp.setUserName(cursor.getString(cursor.getColumnIndexOrThrow("userName")));
-            emp.setPassWord(cursor.getString(cursor.getColumnIndexOrThrow("passWord")));
-            list.add(emp);
-        }
-        cursor.close();
-        return list;
-    }
-
     // Kiểm tra đăng nhập
     public boolean checkLogin(String username, String password) {
         SQLiteDatabase db = dbHelper.getReadableDatabase();

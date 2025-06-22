@@ -1,36 +1,85 @@
 package vn.edu.tlu.group23.mybakeryapp.database;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 
 import vn.edu.tlu.group23.mybakeryapp.models.Product;
 public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "Bakery.db";
-    public static final int DATABASE_VERSION = 2;
+    public static final int DATABASE_VERSION = 7;
+    private Context context;
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        this.context = context; // lưu context để gọi DAO
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
         //Gọi hàm tạo bảng
         createEmployeeTable(db);
         // Thêm tài khoản mẫu để test
-        db.execSQL("INSERT INTO Employee (username, password, fullname, phone, email) " +
-                "VALUES ('admin', '123456', 'Quản trị hệ thống', '0123456789', 'admin@bakery.com')");
+//        db.execSQL("INSERT INTO Employee (username, password, fullname, phone, email) " +
+//                "VALUES ('admin', '123456', 'Quản trị hệ thống', '0123456789', 'admin@bakery.com')");
         //tạo bảng sản phẩm
         createProductTable(db);
+        //tạo bảng shift
+        createShiftTable(db);
+        //tạo bảng task
+        createTaskTable(db);
+
+        //chèn dữ liệu mẫu
+        db.execSQL("INSERT INTO Employee (maNV, tenNV, soDienThoai, chucVu, userName, passWord, role) " +
+                "VALUES ('NV001', 'Admin Bakery', '0909000001', 'Quản trị hệ thống', 'admin', '123456', 'admin')");
+
+        db.execSQL("INSERT INTO Employee (maNV, tenNV, soDienThoai, chucVu, userName, passWord, role) " +
+                "VALUES ('NV002', 'Nhân viên Bán hàng', '0909000002', 'Nhân viên', 'staff', '123456', 'staff')");
+
+
+        Cursor cursor = db.rawQuery("SELECT * FROM Employee", null);
+        Log.d("TEST_EMPLOYEES", "Tổng số tài khoản: " + cursor.getCount());
+        while (cursor.moveToNext()) {
+            String u = cursor.getString(cursor.getColumnIndexOrThrow("userName"));
+            String p = cursor.getString(cursor.getColumnIndexOrThrow("passWord"));
+            Log.d("TEST_EMPLOYEES", "Tài khoản: " + u + " - Mật khẩu: " + p);
+        }
+        cursor.close();
+
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS Employee");
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_EMPLOYEE);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_SANPHAM);
-        //db.execSQL("DROP TABLE IF EXISTS " + TABLE_EMPLOYEE);
+        db.execSQL("DROP TABLE IF EXISTS shifts");
+        db.execSQL("DROP TABLE IF EXISTS tasks");
         onCreate(db);
     }
+
+    @Override
+    public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_EMPLOYEE);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_SANPHAM);
+        db.execSQL("DROP TABLE IF EXISTS shifts");
+        db.execSQL("DROP TABLE IF EXISTS tasks");
+        onCreate(db);
+    }
+//    //Hàm tạo bảng Employee
+//    private void createEmployeeTable(SQLiteDatabase db) {
+//        //Tạo bảng employee
+//        String createEmployeeTable = "CREATE TABLE Employee (" +
+//                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+//                "username TEXT UNIQUE, " +
+//                "password TEXT, " +
+//                "fullname TEXT, " +
+//                "phone TEXT, " +
+//                "email TEXT" +
+//                ")";
+//        db.execSQL(createEmployeeTable);
+//    }
 
     //Hàm tạo bảng Employee
     private void createEmployeeTable(SQLiteDatabase db) {
@@ -40,7 +89,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 COL_SDT + " TEXT, " +
                 COL_CHUCVU + " TEXT, " +
                 COL_USERNAME + " TEXT UNIQUE, " +
-                COL_PASSWORD + " TEXT" +
+                COL_PASSWORD + " TEXT, " +
+                COL_ROLE + " TEXT DEFAULT 'staff'" +
                 ")";
         db.execSQL(sql);
     }
@@ -51,8 +101,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COL_TENNV = "tenNV";
     public static final String COL_SDT = "soDienThoai";
     public static final String COL_CHUCVU = "chucVu";
-    public static final String COL_USERNAME = "username";
-    public static final String COL_PASSWORD = "password";
+    public static final String COL_USERNAME = "userName";
+    public static final String COL_PASSWORD = "passWord";
+    public static final String COL_ROLE = "role";
     public static final String TABLE_SANPHAM = "sanpham";
 
     // Tên cột
@@ -80,6 +131,28 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // Dữ liệu mẫu giờ sẽ được chèn qua ProductDao.insertInitialSampleData()
     }
 
+    //Tạo bảng shift
+    private void createShiftTable(SQLiteDatabase db) {
 
-
+        String createShiftTable = "CREATE TABLE shifts (" +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "name TEXT, " +
+                "start_time TEXT, " +
+                "end_time TEXT)";
+        db.execSQL(createShiftTable);
+    }
+    //Tạo bảng task
+    private void createTaskTable(SQLiteDatabase db) {
+        String createTaskTable = "CREATE TABLE tasks (" +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "shift_id INTEGER NOT NULL, " +
+                "title TEXT NOT NULL, " +
+                "description TEXT, " +
+                "assignee TEXT, " +
+                "status TEXT, " +        // ví dụ: pending, in_progress, done
+                "priority TEXT, " +      // ví dụ: low, medium, high
+                "FOREIGN KEY (shift_id) REFERENCES shifts(id) ON DELETE CASCADE" +
+                ")";
+        db.execSQL(createTaskTable);
+    }
 }
