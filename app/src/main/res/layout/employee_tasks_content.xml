@@ -22,7 +22,7 @@
     <Spinner
         android:id="@+id/spinnerShifts"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/rounded_edittext"
         android:paddingStart="12dp"

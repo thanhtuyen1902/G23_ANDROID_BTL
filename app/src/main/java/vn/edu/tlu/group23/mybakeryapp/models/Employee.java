@@ -1,3 +1,8 @@
+//package vn.edu.tlu.group23.mybakeryapp.models;
+//
+//public class Employee {
+//}
+
 package vn.edu.tlu.group23.mybakeryapp.models;
 
 public class Employee {
@@ -8,14 +13,18 @@ public class Employee {
     private String userName;
     private String passWord;
 
+    private String role;
+
     // Constructor đầy đủ
-    public Employee(String maNV, String tenNV, String soDienThoai, String chucVu, String userName, String passWord) {
+    public Employee(String maNV, String tenNV, String soDienThoai, String chucVu, String userName, String passWord, String role) {
+
         this.maNV = maNV;
         this.tenNV = tenNV;
         this.soDienThoai = soDienThoai;
         this.chucVu = chucVu;
         this.userName = userName;
         this.passWord = passWord;
+        this.role = role;
     }
 
     // Constructor rỗng (bắt buộc nếu dùng Firebase, Gson,...)
@@ -58,6 +67,11 @@ public class Employee {
         return chucVu;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+
     public void setChucVu(String chucVu) {
         this.chucVu = chucVu;
     }
@@ -68,8 +82,12 @@ public class Employee {
         this.passWord = passWord;
     }
 
+    public void setRole(String role) {
+        this.role = role;
+    }
     @Override
     public String toString() {
         return tenNV + " (" + maNV + ")";
     }
 }
+
