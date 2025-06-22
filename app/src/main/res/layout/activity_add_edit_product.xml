@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="#FFF0F5 "
+    tools:context=".activities.AddEditProductActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Header -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp">
+
+            <ImageView
+                android:id="@+id/btnBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:clickable="true"
+                android:focusable="true"
+                android:src="@drawable/ic_arrow_back"
+                app:tint="@color/black"
+                android:contentDescription="Quay lại"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Thêm Sản Phẩm Mới"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <!-- Ảnh sản phẩm -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ảnh Sản Phẩm:"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"/>
+
+        <ImageView
+            android:id="@+id/imgProduct"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/rounded_edittext_bg"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_image"
+            app:tint="@color/le_douxi_grey_text"
+            android:contentDescription="Ảnh sản phẩm" />
+
+        <Button
+            android:id="@+id/btnSelectImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+            android:text="Chọn Ảnh"
+            android:backgroundTint="@color/hot_pink"
+            android:textColor="@color/white" />
+
+        <!-- Mã sản phẩm -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mã Sản Phẩm:"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"/>
+        <EditText
+            android:id="@+id/edtMaSP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nhập mã sản phẩm (ví dụ: B001)"
+            android:inputType="text"
+            android:padding="12dp"
+            android:background="@drawable/rounded_edittext_bg"
+            android:textColor="@color/black"
+            android:textColorHint="@color/le_douxi_grey_text"
+            android:layout_marginTop="8dp"
+            tools:ignore="Autofill" />
+
+        <!-- Tên sản phẩm -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tên Sản Phẩm:"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"/>
+        <EditText
+            android:id="@+id/edtTenSP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nhập tên sản phẩm"
+            android:inputType="text"
+            android:padding="12dp"
+            android:background="@drawable/rounded_edittext_bg"
+            android:textColor="@color/black"
+            android:textColorHint="@color/le_douxi_grey_text"
+            android:layout_marginTop="8dp"
+            tools:ignore="Autofill" />
+
+        <!-- Giá bán -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Giá Bán:"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"/>
+        <EditText
+            android:id="@+id/edtGiaBan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nhập giá bán (ví dụ: 150000)"
+            android:inputType="numberDecimal"
+            android:padding="12dp"
+            android:background="@drawable/rounded_edittext_bg"
+            android:textColor="@color/black"
+            android:textColorHint="@color/le_douxi_grey_text"
+            android:layout_marginTop="8dp"
+            tools:ignore="Autofill" />
+
+        <!-- Loại bánh (Spinner) -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Loại Bánh:"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"/>
+        <Spinner
+            android:id="@+id/spinnerLoaiBanh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:background="@drawable/rounded_edittext_bg"
+            android:layout_marginTop="8dp"/>
+
+        <!-- Mô tả sản phẩm -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mô Tả Sản Phẩm:"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"/>
+        <EditText
+            android:id="@+id/edtMoTaSP"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:gravity="top"
+            android:hint="Nhập mô tả sản phẩm"
+            android:inputType="textMultiLine"
+            android:padding="12dp"
+            android:background="@drawable/rounded_edittext_bg"
+            android:textColor="@color/black"
+            android:textColorHint="@color/le_douxi_grey_text"
+            android:layout_marginTop="8dp"
+            tools:ignore="Autofill" />
+
+        <!-- THAY ĐỔI: "Đã bán" thành "Số lượng đã bán" (EditText) -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Số lượng đã bán:"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"/>
+        <EditText
+            android:id="@+id/edtSoLuongDaBan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nhập số lượng đã bán (ví dụ: 50)"
+            android:inputType="number"
+            android:padding="12dp"
+            android:background="@drawable/rounded_edittext_bg"
+            android:textColor="@color/black"
+            android:textColorHint="@color/le_douxi_grey_text"
+            android:layout_marginTop="8dp"
+            tools:ignore="Autofill" />
+
+        <!-- Hình thức đặt bánh (RadioGroup) -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hình Thức Đặt Bánh:"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"/>
+        <RadioGroup
+            android:id="@+id/rgHinhThucDatBanh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="8dp">
+            <RadioButton
+                android:id="@+id/rbDatTrucTiep"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Đặt ngay"
+                android:textColor="@color/black"/>
+            <RadioButton
+                android:id="@+id/rbDatOnline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Đặt trước"
+                android:textColor="@color/black"/>
+        </RadioGroup>
+
+        <!-- Nút Thêm Sản Phẩm -->
+        <Button
+            android:id="@+id/btnSaveProduct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lưu Sản Phẩm"
+            android:backgroundTint="@color/hot_pink"
+            android:textColor="@color/white"
+            android:layout_marginTop="24dp"
+            android:padding="12dp"/>
+
+    </LinearLayout>
+</ScrollView>
