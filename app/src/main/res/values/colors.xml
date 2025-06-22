@@ -13,4 +13,20 @@
     <color name="brown">#8B4513</color>
     <color name="light_brown">#C4A484</color>
     <color name="pastel_pink">#FFD1DC</color>   <color name="hot_pink">#FF69B4</color>
+
+    <color name="container_pink_light">#FCE4EC</color>
+    <color name="selected_pink">#F48FB1</color>
+    <color name="button_red">#F44336</color>
+
+    <color name="status_green_background">#D4EDDA</color>
+    <color name="status_green_text">#065F46</color>
+    <color name="progress_bar_green">#72CC54</color>
+    <color name="progress_bar_background_grey">#E0E0E0</color>
+    <color name="spinner_border_grey">#E0E0E0</color>
+    <color name="spinner_arrow_grey">#757575</color>
+    <color name="darker_gray">@android:color/darker_gray</color>
+    <color name="status_hoan_thanh">#81C784</color>
+    <color name="status_dang_thuc_hien">#64B5F6</color>
+    <color name="priority_cao">#EF5350</color>
+    <color name="priority_trung_binh">#FFCA28</color>
 </resources>

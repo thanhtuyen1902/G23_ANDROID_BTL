@@ -51,7 +51,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginTop="24dp"
-        android:background="@drawable/rounded_pink_main_button_background"
+        android:background="@drawable/button_background_container"
         android:orientation="horizontal"
         android:weightSum="2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -63,12 +63,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/rounded_pink_main_button_background"
+            android:background="@drawable/button_left_selector"
             android:paddingBottom="12dp"
             android:paddingTop="12dp"
             android:text="Chấm công"
             android:textAllCaps="false"
-            android:textColor="#ffffff"
+            android:textColor="@color/button_text_color_selector"
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -77,12 +77,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/rounded_pink_main_button_background"
+            android:background="@drawable/button_right_selector"
             android:paddingBottom="12dp"
             android:paddingTop="12dp"
             android:text="Công việc"
             android:textAllCaps="false"
-            android:textColor="#ffffff"
+            android:textColor="@color/button_text_color_selector"
             android:textSize="16sp"
             android:textStyle="bold" />
     </LinearLayout>
@@ -93,15 +93,19 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabSelectionLayout">
+        app:layout_constraintTop_toBottomOf="@+id/tabSelectionLayout"
+        app:layout_constraintVertical_bias="0.0">
 
         <include
             android:id="@+id/layoutTimekeeping"
             layout="@layout/employee_timekeeping"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="gone" /> <include
+            android:visibility="gone" />
+
+        <include
             android:id="@+id/layoutTasks"
             layout="@layout/employee_tasks_content"
             android:layout_width="match_parent"
