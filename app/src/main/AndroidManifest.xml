@@ -31,6 +31,9 @@
             android:name=".activities.EmployeeActivity"
             android:exported="false" />
         <activity
+            android:name=".activities.AddEmployeeActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.HomeActivity"
             android:exported="false" />
         <activity

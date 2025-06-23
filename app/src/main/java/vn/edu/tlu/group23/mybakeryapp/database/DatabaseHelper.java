@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import vn.edu.tlu.group23.mybakeryapp.models.Product;
 public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "Bakery.db";
-    public static final int DATABASE_VERSION = 7;
+    public static final int DATABASE_VERSION = 8;
     private Context context;
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -37,6 +37,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         db.execSQL("INSERT INTO Employee (maNV, tenNV, soDienThoai, chucVu, userName, passWord, role) " +
                 "VALUES ('NV002', 'Nhân viên Bán hàng', '0909000002', 'Nhân viên', 'staff', '123456', 'staff')");
+
+        db.execSQL("INSERT INTO Employee (maNV, tenNV, soDienThoai, chucVu, userName, passWord, role) " +
+                "VALUES ('NV003', 'Nguyễn Lan Anh', '0323456182', 'Thợ làm bánh', 'nguyenlananh', '123456', 'staff')");
+
+        db.execSQL("INSERT INTO Employee (maNV, tenNV, soDienThoai, chucVu, userName, passWord, role) " +
+                "VALUES ('NV004', 'Đinh Hoàng Anh', '0385998231', 'Thợ nướng bánh', 'dinhhoanganh', '123456', 'staff')");
 
 
         Cursor cursor = db.rawQuery("SELECT * FROM Employee", null);
@@ -104,8 +110,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COL_USERNAME = "userName";
     public static final String COL_PASSWORD = "passWord";
     public static final String COL_ROLE = "role";
-    public static final String TABLE_SANPHAM = "sanpham";
 
+
+    public static final String TABLE_SANPHAM = "sanpham";
     // Tên cột
     public static final String COL_HINHANH = "hinhAnh";
     public static final String COL_MASP = "maSP";

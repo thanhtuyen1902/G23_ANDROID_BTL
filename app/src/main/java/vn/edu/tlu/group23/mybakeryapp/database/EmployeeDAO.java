@@ -69,9 +69,11 @@ public class EmployeeDAO {
             emp.setChucVu(cursor.getString(cursor.getColumnIndexOrThrow("chucVu")));
             emp.setUserName(cursor.getString(cursor.getColumnIndexOrThrow("userName")));
             emp.setPassWord(cursor.getString(cursor.getColumnIndexOrThrow("passWord")));
+            emp.setRole(cursor.getString(cursor.getColumnIndexOrThrow("role")));
             list.add(emp);
         }
         cursor.close();
+        db.close();
         return list;
     }
 
@@ -85,6 +87,7 @@ public class EmployeeDAO {
         values.put("userName", emp.getUserName());
         values.put("passWord", emp.getPassWord());
         return db.update("Employee", values, "maNV = ?", new String[]{emp.getMaNV()});
+
     }
 
     // Xoá nhân viên
@@ -92,16 +95,28 @@ public class EmployeeDAO {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         return db.delete("Employee", "maNV = ?", new String[]{maNV});
     }
-
-    // Kiểm tra đăng nhập
-    public boolean checkLogin(String username, String password) {
+    //Kiểm tra đăng nhập
+    public Employee getEmployeeByLogin(String username, String password) {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         String sql = "SELECT * FROM Employee WHERE userName = ? AND passWord = ?";
         Cursor cursor = db.rawQuery(sql, new String[]{username, password});
-        boolean result = cursor.getCount() > 0;
+        if (cursor.moveToFirst()) {
+            Employee emp = new Employee();
+            emp.setMaNV(cursor.getString(cursor.getColumnIndexOrThrow("maNV")));
+            emp.setTenNV(cursor.getString(cursor.getColumnIndexOrThrow("tenNV")));
+            emp.setSoDienThoai(cursor.getString(cursor.getColumnIndexOrThrow("soDienThoai")));
+            emp.setChucVu(cursor.getString(cursor.getColumnIndexOrThrow("chucVu")));
+            emp.setUserName(cursor.getString(cursor.getColumnIndexOrThrow("userName")));
+            emp.setPassWord(cursor.getString(cursor.getColumnIndexOrThrow("passWord")));
+            emp.setRole(cursor.getString(cursor.getColumnIndexOrThrow("role")));
+            cursor.close();
+            return emp;
+        }
         cursor.close();
-        return result;
+        db.close();
+        return null;
     }
+
 
 
 }

@@ -51,6 +51,8 @@ public class HomeActivity extends AppCompatActivity {
         cardManageEmployees.setOnClickListener(v -> {
             Toast.makeText(HomeActivity.this, "Chức năng Quản lý Nhân viên!", Toast.LENGTH_SHORT).show();
             // TODO: Chuyển đến EmployeeManagementActivity
+            Intent intent = new Intent(HomeActivity.this, EmployeeActivity.class);
+            startActivity(intent);
         });
 
         cardManageTasks.setOnClickListener(v -> {

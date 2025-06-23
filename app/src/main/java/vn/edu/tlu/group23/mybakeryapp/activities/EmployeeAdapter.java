@@ -57,6 +57,7 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.Employ
         holder.tvUserName.setText("UserName: " + employee.getUserName());
         holder.tvPassword.setText("Password: " + employee.getPassWord());
 
+
         holder.iconEdit.setOnClickListener(v -> {
             if (listener != null) listener.onEditClick(employee);
         });
