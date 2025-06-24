@@ -29,4 +29,5 @@
     <color name="status_dang_thuc_hien">#64B5F6</color>
     <color name="priority_cao">#EF5350</color>
     <color name="priority_trung_binh">#FFCA28</color>
+    <color name="unselected_grey">#757575</color>
 </resources>
