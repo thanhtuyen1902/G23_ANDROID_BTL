@@ -53,6 +53,7 @@ public class EmployeeDAO {
         values.put("passWord", emp.getPassWord());
         values.put("role", emp.getRole()); // thêm dòng này
         return db.insert("Employee", null, values);
+
     }
 
     // Lấy toàn bộ nhân viên
@@ -72,6 +73,7 @@ public class EmployeeDAO {
             list.add(emp);
         }
         cursor.close();
+        db.close();
         return list;
     }
 
@@ -84,8 +86,8 @@ public class EmployeeDAO {
         values.put("chucVu", emp.getChucVu());
         values.put("userName", emp.getUserName());
         values.put("passWord", emp.getPassWord());
-        values.put("role", emp.getRole()); // thêm dòng này
         return db.update("Employee", values, "maNV = ?", new String[]{emp.getMaNV()});
+
     }
 
     // Xoá nhân viên
@@ -93,31 +95,7 @@ public class EmployeeDAO {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         return db.delete("Employee", "maNV = ?", new String[]{maNV});
     }
-
-    // Tìm kiếm theo mã hoặc tên
-    public List<Employee> searchEmployees(String keyword) {
-        List<Employee> list = new ArrayList<>();
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
-        Cursor cursor = db.rawQuery(
-                "SELECT * FROM Employee WHERE maNV LIKE ? OR tenNV LIKE ?",
-                new String[]{"%" + keyword + "%", "%" + keyword + "%"}
-        );
-        while (cursor.moveToNext()) {
-            Employee emp = new Employee();
-            emp.setMaNV(cursor.getString(cursor.getColumnIndexOrThrow("maNV")));
-            emp.setTenNV(cursor.getString(cursor.getColumnIndexOrThrow("tenNV")));
-            emp.setSoDienThoai(cursor.getString(cursor.getColumnIndexOrThrow("soDienThoai")));
-            emp.setChucVu(cursor.getString(cursor.getColumnIndexOrThrow("chucVu")));
-            emp.setUserName(cursor.getString(cursor.getColumnIndexOrThrow("userName")));
-            emp.setPassWord(cursor.getString(cursor.getColumnIndexOrThrow("passWord")));
-            emp.setRole(cursor.getString(cursor.getColumnIndexOrThrow("role")));
-            list.add(emp);
-        }
-        cursor.close();
-        return list;
-    }
-
-    // Kiểm tra đăng nhập
+    //Kiểm tra đăng nhập
     public Employee getEmployeeByLogin(String username, String password) {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         String sql = "SELECT * FROM Employee WHERE userName = ? AND passWord = ?";
@@ -135,6 +113,8 @@ public class EmployeeDAO {
             return emp;
         }
         cursor.close();
+        db.close();
         return null;
     }
+
 }
