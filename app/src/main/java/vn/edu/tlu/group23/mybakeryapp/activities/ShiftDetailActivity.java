@@ -26,7 +26,7 @@ import vn.edu.tlu.group23.mybakeryapp.models.Task;
 
 public class ShiftDetailActivity extends AppCompatActivity {
     private TextView shiftNameTitle;
-    private SearchView searchView;
+    SearchView searchView;
     private RecyclerView recyclerViewTasks;
     private TaskAdapter taskAdapter;
     private List<Task> taskList = new ArrayList<>();
@@ -51,11 +51,10 @@ public class ShiftDetailActivity extends AppCompatActivity {
 
         //Định vị các phần tử
         recyclerViewTasks = findViewById(R.id.recyclerViewTasks);
-        searchView = findViewById(R.id.editTextSearch);
+        searchView = findViewById(R.id.searchView);
         shiftNameTitle = findViewById(R.id.shiftNameTitle);
         btnAddJob = findViewById(R.id.btnAddJob);
         backArrow = findViewById(R.id.backArrow);
-
         // Gán view
         shiftNameTitle.setText(shiftName);
 
@@ -64,24 +63,25 @@ public class ShiftDetailActivity extends AppCompatActivity {
         taskDAO = new TaskDAO(db);
 
         //Thực hiện chèn dữ liệu mẫu
-        taskDAO.insertSampleTasksIfEmpty(shiftId);
+//        taskDAO.insertSampleTasksIfEmpty(shiftId);
 
         // Hiển thị danh sách task ban đầu
         loadTasks();
 
-        // Tìm kiếm task theo tên
-//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//            @Override public boolean onQueryTextSubmit(String query) { return false; }
-//            @Override
-//            public boolean onQueryTextChange(String newText) {
-//                taskAdapter.filter(newText);
-//                return true;
-//            }
-//        });
         // Thêm công việc mới
         btnAddJob.setOnClickListener(view -> {
             AddEditTaskDialog dialog = new AddEditTaskDialog(this, shiftId, taskDAO, this::loadTasks);
             dialog.show();
+        });
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override public boolean onQueryTextSubmit(String query) { return false; }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                taskAdapter.filter(newText);
+                return true;
+            }
         });
         // Quay lại
         backArrow.setOnClickListener(v -> finish());
@@ -104,16 +104,17 @@ public class ShiftDetailActivity extends AppCompatActivity {
 
     private void loadTasks() {
         taskList = taskDAO.getTasksByShift(shiftId);
-        taskAdapter = new TaskAdapter(this, taskList, task -> {
-            // Mở dialog sửa khi click vào 1 task
-            AddEditTaskDialog editDialog = new AddEditTaskDialog(
-                    ShiftDetailActivity.this,
-                    task,
-                    taskDAO,
-                    this::loadTasks
-            );
-            editDialog.show();
-        });
+        taskAdapter = new TaskAdapter(
+                this,
+                taskList,
+                taskDAO,
+                this::loadTasks,
+                task -> {
+                    // mở dialog sửa
+                    AddEditTaskDialog dialog = new AddEditTaskDialog(this, task, taskDAO, this::loadTasks);
+                    dialog.show();
+                }
+        );
         recyclerViewTasks.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewTasks.setAdapter(taskAdapter);
     }

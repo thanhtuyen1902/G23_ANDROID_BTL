@@ -1,6 +1,7 @@
 package vn.edu.tlu.group23.mybakeryapp.activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button; // Vẫn giữ nếu bạn có các nút khác
 import android.widget.ImageView;
@@ -66,12 +67,22 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         ivLogout.setOnClickListener(v -> {
+            // Xoá dữ liệu đăng nhập
+            SharedPreferences prefs = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.clear();
+            editor.apply();
             Toast.makeText(HomeActivity.this, "Đăng xuất thành công!", Toast.LENGTH_SHORT).show();
-            finish();
+//            finish();
             // Nếu có LoginActivity:
             // Intent intent = new Intent(AdminHomeActivity.this, LoginActivity.class);
             // intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             // startActivity(intent);
+            // Quay về màn đăng nhập và xoá backstack
+            Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finish();
         });
     }
 }

@@ -19,12 +19,14 @@ public class ShiftAdapter extends RecyclerView.Adapter<ShiftAdapter.ShiftViewHol
     private Context context;
     private OnShiftClickListener listener;
 
+    private List<Shift> fullShiftList;
     public interface OnShiftClickListener {
         void onShiftClick(Shift shift);
     }
     public ShiftAdapter(Context context, List<Shift> shiftList, OnShiftClickListener listener) {
         this.context = context;
         this.shiftList = shiftList;
+        this.fullShiftList = new java.util.ArrayList<>(shiftList); // lưu danh sách gốc
         this.listener = listener;
     }
     @NonNull
@@ -63,5 +65,20 @@ public class ShiftAdapter extends RecyclerView.Adapter<ShiftAdapter.ShiftViewHol
             tvShiftName = itemView.findViewById(R.id.tvShiftName);
             tvShiftTime = itemView.findViewById(R.id.tvShiftTime);
         }
+    }
+
+    public void filter(String keyword) {
+        if (keyword == null || keyword.trim().isEmpty()) {
+            shiftList = new java.util.ArrayList<>(fullShiftList);
+        } else {
+            List<Shift> filteredList = new java.util.ArrayList<>();
+            for (Shift shift : fullShiftList) {
+                if (shift.getName().toLowerCase().contains(keyword.toLowerCase())) {
+                    filteredList.add(shift);
+                }
+            }
+            shiftList = filteredList;
+        }
+        notifyDataSetChanged();
     }
 }

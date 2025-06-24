@@ -19,37 +19,45 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/mapPlaceholderCard"
+<!--    <androidx.cardview.widget.CardView-->
+<!--        android:id="@+id/mapPlaceholderCard"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="200dp"-->
+<!--        android:layout_marginTop="12dp"-->
+<!--        app:cardCornerRadius="12dp"-->
+<!--        app:cardElevation="4dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/tvCurrentLocationLabel">-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:gravity="center"-->
+<!--            android:orientation="vertical">-->
+
+<!--            <ImageView-->
+<!--                android:layout_width="40dp"-->
+<!--                android:layout_height="40dp"-->
+<!--                android:src="@drawable/ic_location_pin"-->
+<!--                tools:ignore="ContentDescription" />-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Vị trí của bạn"-->
+<!--                android:textColor="@android:color/darker_gray"-->
+<!--                android:textSize="16sp" />-->
+<!--        </LinearLayout>-->
+<!--    </androidx.cardview.widget.CardView>-->
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/mapView"
         android:layout_width="0dp"
         android:layout_height="200dp"
         android:layout_marginTop="12dp"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCurrentLocationLabel"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCurrentLocationLabel">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/ic_location_pin"
-                tools:ignore="ContentDescription" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Vị trí của bạn"
-                android:textColor="@android:color/darker_gray"
-                android:textSize="16sp" />
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnCheckInCheckOut"
@@ -64,14 +72,14 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mapPlaceholderCard" />
+        app:layout_constraintTop_toBottomOf="@+id/mapView" />
 
     <TextView
         android:id="@+id/tvCheckInStatus"
         android:layout_width="140dp"
         android:layout_height="35dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/tag_completed_background"
+        android:background="@drawable/tag_status_completed"
         android:gravity="center"
         android:padding="8dp"
         android:text="Đã check-in"

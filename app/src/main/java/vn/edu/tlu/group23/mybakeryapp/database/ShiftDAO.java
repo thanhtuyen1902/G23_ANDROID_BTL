@@ -49,4 +49,33 @@ public class ShiftDAO {
     public void clearShifts() {
         db.delete("shifts", null, null);
     }
+
+    //Lấy tên ca theo id
+    public String getShiftNameById(int shiftId) {
+        Cursor cursor = db.rawQuery("SELECT name FROM shifts WHERE id = ?", new String[]{String.valueOf(shiftId)});
+        if (cursor.moveToFirst()) {
+            String name = cursor.getString(0);
+            cursor.close();
+            return name;
+        }
+        cursor.close();
+        return "Ca không xác định";
+    }
+
+    //Truy vấn thông tin về ca
+
+    public Shift getShiftById(int shiftId) {
+        Cursor cursor = db.rawQuery("SELECT * FROM shifts WHERE id = ?", new String[]{String.valueOf(shiftId)});
+        Shift shift = null;
+        if (cursor.moveToFirst()) {
+            int id = cursor.getInt(cursor.getColumnIndexOrThrow("id"));
+            String name = cursor.getString(cursor.getColumnIndexOrThrow("name"));
+            String startTime = cursor.getString(cursor.getColumnIndexOrThrow("start_time"));
+            String endTime = cursor.getString(cursor.getColumnIndexOrThrow("end_time"));
+
+            shift = new Shift(id, name, startTime, endTime);
+        }
+        cursor.close();
+        return shift;
+    }
 }

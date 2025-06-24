@@ -2,7 +2,7 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_selected="true">
         <shape android:shape="rectangle">
-            <solid android:color="#F48FB1" />
+            <solid android:color="@color/tab_selected_bg" />
             <corners android:topLeftRadius="8dp" android:bottomLeftRadius="8dp" />
         </shape>
     </item>
