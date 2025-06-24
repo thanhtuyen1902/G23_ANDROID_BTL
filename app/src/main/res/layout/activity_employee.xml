@@ -21,28 +21,14 @@
 
         <ImageView
             android:id="@+id/imgLogo"
-            android:layout_width="79dp"
-            android:layout_height="49dp"
+            android:layout_width="140dp"
+            android:layout_height="61dp"
             android:layout_marginStart="10dp"
             android:src="@drawable/cake_logo"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ContentDescription" />
-
-        <TextView
-            android:id="@+id/tvAppName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Bakery"
-            android:textColor="#FFFFFF"
-            android:textSize="24sp"
-            android:textStyle="italic"
-            android:fontFamily="cursive"
-            android:layout_marginStart="8dp"
-            app:layout_constraintStart_toEndOf="@id/imgLogo"
-            app:layout_constraintTop_toTopOf="@id/imgLogo"
-            app:layout_constraintBottom_toBottomOf="@id/imgLogo" />
 
         <ImageView
             android:id="@+id/iconNotification"
