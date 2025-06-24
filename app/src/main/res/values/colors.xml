@@ -29,5 +29,13 @@
     <color name="status_dang_thuc_hien">#64B5F6</color>
     <color name="priority_cao">#EF5350</color>
     <color name="priority_trung_binh">#FFCA28</color>
+
+    <color name="tab_container_bg">#FCE4EC</color>
+    <color name="tab_selected_bg">#F48FB1</color>
+    <color name="tab_unselected_text">#FF000000</color>
+    <color name="tab_selected_text">#FFFFFFFF</color>
+    <color name="app_background_light_grey">#F8F8F8</color>
+
     <color name="unselected_grey">#757575</color>
+
 </resources>

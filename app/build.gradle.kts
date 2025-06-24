@@ -40,4 +40,8 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+    //thêm để lấy vị trí gps
+    implementation("com.google.android.gms:play-services-location:21.3.0")
+    //thêm để hiện map view
+    implementation ("com.google.android.gms:play-services-maps:18.2.0")
 }

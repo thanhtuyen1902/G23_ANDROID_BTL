@@ -53,17 +53,18 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <SearchView
-        android:id="@+id/editTextSearch"
+        android:id="@+id/searchView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="4dp"
         android:background="@drawable/rounded_edittext"
         android:iconifiedByDefault="false"
         android:queryHint="Tìm kiếm công việc"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/shiftHeaderLayout" />
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnAddJob"
         android:layout_width="0dp"
@@ -77,7 +78,7 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editTextSearch" />
+        app:layout_constraintTop_toBottomOf="@id/searchView" />
 
     <TextView
         android:id="@+id/tvspace"

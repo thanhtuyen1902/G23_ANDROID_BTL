@@ -16,7 +16,10 @@ import java.util.Arrays;
 import java.util.List;
 
 import vn.edu.tlu.group23.mybakeryapp.R;
+import vn.edu.tlu.group23.mybakeryapp.database.DatabaseHelper;
+import vn.edu.tlu.group23.mybakeryapp.database.EmployeeDAO;
 import vn.edu.tlu.group23.mybakeryapp.database.TaskDAO;
+import vn.edu.tlu.group23.mybakeryapp.models.Employee;
 import vn.edu.tlu.group23.mybakeryapp.models.Task;
 
 public class AddEditTaskDialog extends Dialog {
@@ -25,7 +28,8 @@ public class AddEditTaskDialog extends Dialog {
     private int shiftId;
     private Task taskToEdit; // null nếu thêm mới, có giá trị nếu sửa
     private Runnable onTaskChanged; // callback load lại danh sách
-    List<String> employeeNames;
+    private EmployeeDAO employeeDAO;
+    private List<Employee> employeeList;
     TextView dialogTitle;
     EditText edtTaskName, edtDescription;
     Spinner spinnerAssignee, spinnerPriority;
@@ -37,6 +41,7 @@ public class AddEditTaskDialog extends Dialog {
         this.shiftId = shiftId;
         this.taskDAO = taskDAO;
         this.onTaskChanged = onTaskChanged;
+        this.employeeDAO = new EmployeeDAO(context);
     }
 
     // Constructor dùng khi sửa
@@ -47,6 +52,7 @@ public class AddEditTaskDialog extends Dialog {
         this.shiftId = taskToEdit.getShiftId();
         this.taskDAO = taskDAO;
         this.onTaskChanged = onTaskChanged;
+        this.employeeDAO = new EmployeeDAO(context);
     }
 
     @Override
@@ -80,9 +86,13 @@ public class AddEditTaskDialog extends Dialog {
         priorityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerPriority.setAdapter(priorityAdapter);
 
-        //Thiết lập dữ liệu cho spinner nhân viên giả định
-        employeeNames = Arrays.asList("Nguyễn Văn A", "Trần Thị B", "Lê Văn C");
-        ArrayAdapter<String> employeeAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, employeeNames);
+        // Thiết lập spinner nhân viên từ SQLite
+        employeeList = employeeDAO.getAllEmployees();
+        ArrayAdapter<Employee> employeeAdapter = new ArrayAdapter<>(
+                context,
+                android.R.layout.simple_spinner_item,
+                employeeList
+        );
         employeeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerAssignee.setAdapter(employeeAdapter);
 
@@ -95,8 +105,12 @@ public class AddEditTaskDialog extends Dialog {
             edtDescription.setText(taskToEdit.getDescription());
 
             // set selection cho spinner
-            int assigneePos = employeeNames.indexOf(taskToEdit.getAssignee());
-            if (assigneePos >= 0) spinnerAssignee.setSelection(assigneePos);
+            for (int i = 0; i < employeeList.size(); i++) {
+                if (employeeList.get(i).getMaNV().equals(taskToEdit.getAssignee())) {
+                    spinnerAssignee.setSelection(i);
+                    break;
+                }
+            }
 
             int priorityPos = priorityAdapter.getPosition(taskToEdit.getPriority());
             if (priorityPos >= 0) spinnerPriority.setSelection(priorityPos);
@@ -112,7 +126,8 @@ public class AddEditTaskDialog extends Dialog {
         btnSave.setOnClickListener(v -> {
             String title = edtTaskName.getText().toString().trim();
             String description = edtDescription.getText().toString().trim();
-            String assignee = spinnerAssignee.getSelectedItem().toString();
+            Employee selectedEmployee = (Employee) spinnerAssignee.getSelectedItem();
+            String assignee = selectedEmployee.getMaNV();
             String priority = spinnerPriority.getSelectedItem().toString();
             String status = "Chưa làm"; // mặc định là to-do
 

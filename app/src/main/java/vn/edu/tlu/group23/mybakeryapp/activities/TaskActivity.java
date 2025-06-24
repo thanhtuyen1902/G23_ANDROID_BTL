@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.SearchView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,6 +35,7 @@ public class TaskActivity extends AppCompatActivity {
     private List<Shift> shiftList;
     Button btnAddShift;
     ImageView backArrow;
+    SearchView searchView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +47,7 @@ public class TaskActivity extends AppCompatActivity {
 
         shiftDAO = new ShiftDAO(db);
 
-        shiftDAO.clearShifts();
+//        shiftDAO.clearShifts();
         //chèn dữ liệu mẫu
         shiftDAO.insertSampleShiftsIfEmpty();
 
@@ -53,6 +55,7 @@ public class TaskActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerViewShift);
         btnAddShift = findViewById(R.id.btnAddShift);
         backArrow = findViewById(R.id.backArrow);
+        searchView = findViewById(R.id.searchView);
         // Load danh sách ca ban đầu
         loadShifts();
 
@@ -63,6 +66,19 @@ public class TaskActivity extends AppCompatActivity {
                     this::loadShifts // callback reload sau khi thêm
             );
             dialog.show();
+        });
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.filter(newText);
+                return true;
+            }
         });
 
         // Quay lại

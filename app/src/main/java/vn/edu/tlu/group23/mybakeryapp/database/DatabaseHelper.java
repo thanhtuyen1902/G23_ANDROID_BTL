@@ -39,6 +39,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "VALUES ('NV002', 'Nhân viên Bán hàng', '0909000002', 'Nhân viên', 'staff', '123456', 'staff')");
 
         db.execSQL("INSERT INTO Employee (maNV, tenNV, soDienThoai, chucVu, userName, passWord, role) " +
+
+                "VALUES ('NV003', 'Nhân viên Làm bánh', '0909560002', 'Nhân viên', 'staff2', '123456', 'staff')");
+
                 "VALUES ('NV003', 'Nguyễn Lan Anh', '0323456182', 'Thợ làm bánh', 'nguyenlananh', '123456', 'staff')");
 
         db.execSQL("INSERT INTO Employee (maNV, tenNV, soDienThoai, chucVu, userName, passWord, role) " +
@@ -73,19 +76,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS tasks");
         onCreate(db);
     }
-//    //Hàm tạo bảng Employee
-//    private void createEmployeeTable(SQLiteDatabase db) {
-//        //Tạo bảng employee
-//        String createEmployeeTable = "CREATE TABLE Employee (" +
-//                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-//                "username TEXT UNIQUE, " +
-//                "password TEXT, " +
-//                "fullname TEXT, " +
-//                "phone TEXT, " +
-//                "email TEXT" +
-//                ")";
-//        db.execSQL(createEmployeeTable);
-//    }
+
+    @Override
+    public void onConfigure(SQLiteDatabase db) {
+        super.onConfigure(db);
+        db.setForeignKeyConstraintsEnabled(true);
+    }
+
 
     //Hàm tạo bảng Employee
     private void createEmployeeTable(SQLiteDatabase db) {
@@ -148,17 +145,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "end_time TEXT)";
         db.execSQL(createShiftTable);
     }
-    //Tạo bảng task
+
+
     private void createTaskTable(SQLiteDatabase db) {
         String createTaskTable = "CREATE TABLE tasks (" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "shift_id INTEGER NOT NULL, " +
                 "title TEXT NOT NULL, " +
                 "description TEXT, " +
-                "assignee TEXT, " +
-                "status TEXT, " +        // ví dụ: pending, in_progress, done
-                "priority TEXT, " +      // ví dụ: low, medium, high
-                "FOREIGN KEY (shift_id) REFERENCES shifts(id) ON DELETE CASCADE" +
+                "assignee_id TEXT, " +
+                "status TEXT, " +
+                "priority TEXT, " +
+                "FOREIGN KEY (shift_id) REFERENCES shifts(id) ON DELETE CASCADE, " +
+                "FOREIGN KEY (assignee_id) REFERENCES Employee(maNV) ON DELETE SET NULL" +
                 ")";
         db.execSQL(createTaskTable);
     }
