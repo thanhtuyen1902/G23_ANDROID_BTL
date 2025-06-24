@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -23,6 +24,7 @@ public class AddEmployeeActivity extends AppCompatActivity {
     private EditText edtMaNV, edtTen, edtSDT, edtChucVu, edtUserName, edtPassword;
     private Button btnSave;
     private ImageView btnBack;
+    private TextView tvEnterEmployeeIdLabel;
     private EmployeeDAO employeeDAO;
     private String mode;
     private int position = -1;
@@ -42,13 +44,15 @@ public class AddEmployeeActivity extends AppCompatActivity {
         edtPassword = findViewById(R.id.edtPassword);
         btnSave = findViewById(R.id.btnSave);
         btnBack = findViewById(R.id.btnBack);
+        tvEnterEmployeeIdLabel = findViewById(R.id.tvEnterEmployeeIdLabel);
 
         // Khởi tạo DAO
         employeeDAO = new EmployeeDAO(this);
 
-        // Lấy mode từ Intent
+        // Lấy mode từ Intent và đặt tiêu đề
         mode = getIntent().getStringExtra("mode");
         if ("edit".equals(mode)) {
+            tvEnterEmployeeIdLabel.setText("Sửa thông tin nhân viên");
             // Điền thông tin nhân viên để chỉnh sửa
             String maNV = getIntent().getStringExtra("maNV");
             String ten = getIntent().getStringExtra("ten");
@@ -58,12 +62,18 @@ public class AddEmployeeActivity extends AppCompatActivity {
             String password = getIntent().getStringExtra("password");
             position = getIntent().getIntExtra("position", -1);
 
-            edtMaNV.setText(maNV);
-            edtTen.setText(ten);
-            edtSDT.setText(sdt);
-            edtChucVu.setText(chucVu);
-            edtUserName.setText(userName);
-            edtPassword.setText(password);
+            if (maNV != null) {
+                edtMaNV.setText(maNV);
+                edtTen.setText(ten);
+                edtSDT.setText(sdt);
+                edtChucVu.setText(chucVu);
+                edtUserName.setText(userName);
+                edtPassword.setText(password);
+            } else {
+                Toast.makeText(this, "Dữ liệu nhân viên không hợp lệ", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            tvEnterEmployeeIdLabel.setText("Thêm nhân viên");
         }
 
         // Xử lý nút quay lại
@@ -90,11 +100,10 @@ public class AddEmployeeActivity extends AppCompatActivity {
             employee.setChucVu(chucVu);
             employee.setUserName(userName);
             employee.setPassWord(password);
-            employee.setRole("staff"); // Mặc định là staff
+            employee.setRole("staff");
 
             Intent resultIntent = new Intent();
             resultIntent.putExtra("mode", mode);
-
 
             if ("add".equals(mode)) {
                 long result = employeeDAO.insertEmployee(employee);
@@ -108,6 +117,7 @@ public class AddEmployeeActivity extends AppCompatActivity {
             } else if ("edit".equals(mode)) {
                 int result = employeeDAO.updateEmployee(employee);
                 if (result > 0) {
+                    resultIntent.putExtra("position", position);
                     setResult(RESULT_OK, resultIntent);
                     Toast.makeText(this, "Cập nhật nhân viên thành công", Toast.LENGTH_SHORT).show();
                 } else {
