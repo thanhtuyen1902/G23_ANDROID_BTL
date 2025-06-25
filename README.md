@@ -24,7 +24,7 @@
   - Quản lý mô tả, hình ảnh, số lượng, giá bán
 
 - ✅ **Quản lý công việc**
-  - Tạo công việc theo ca / ngày
+  - Tạo công việc theo ca
   - Phân công cho nhân viên cụ thể
   - Theo dõi trạng thái hoàn thành
 
