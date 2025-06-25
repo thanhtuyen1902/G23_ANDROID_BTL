@@ -123,8 +123,8 @@
             android:textSize="20sp"
             android:textStyle="bold"
             android:textAllCaps="false"
-            android:textColor="#FFFFFF"
-            android:backgroundTint="#E87D7D"
+            android:textColor="#000000"
+            android:backgroundTint="#FF8CA6"
             android:background="@drawable/buttonaddshift_task" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>
