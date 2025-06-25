@@ -41,8 +41,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO Employee (maNV, tenNV, soDienThoai, chucVu, userName, passWord, role) " +
                 "VALUES ('NV003', 'Nhân viên Làm bánh', '0909560002', 'Nhân viên', 'staff2', '123456', 'staff')");
 
+
         db.execSQL("INSERT INTO Employee (maNV, tenNV, soDienThoai, chucVu, userName, passWord, role) " +
-                "VALUES ('NV005', 'Nguyễn Lan Anh', '0323456182', 'Thợ làm bánh', 'nguyenlananh', '123456', 'staff')");
+
+               "VALUES ('NV005', 'Nguyễn Lan Anh', '0323456182', 'Thợ làm bánh', 'nguyenlananh', '123456', 'staff')");
+
 
 
         db.execSQL("INSERT INTO Employee (maNV, tenNV, soDienThoai, chucVu, userName, passWord, role) " +
