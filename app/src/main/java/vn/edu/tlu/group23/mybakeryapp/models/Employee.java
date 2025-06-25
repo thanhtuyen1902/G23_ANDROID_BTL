@@ -16,6 +16,7 @@ public class Employee {
 
     // Constructor đầy đủ
     public Employee(String maNV, String tenNV, String soDienThoai, String chucVu, String userName, String passWord, String role) {
+
         this.maNV = maNV;
         this.tenNV = tenNV;
         this.soDienThoai = soDienThoai;
@@ -32,15 +33,18 @@ public class Employee {
     public String getMaNV() {
         return maNV;
     }
-
-    public void setMaNV(String maNV) {
-        this.maNV = maNV;
-    }
-
     public String getTenNV() {
         return tenNV;
     }
-
+    public String getSoDienThoai() {
+        return soDienThoai;
+    }
+    public String getChucVu() {
+        return chucVu;
+    }
+    public String getRole() {
+        return role;
+    }
     public String getUserName() {
         return userName;
     }
@@ -48,27 +52,15 @@ public class Employee {
         return passWord;
     }
 
-
+    public void setMaNV(String maNV) {
+        this.maNV = maNV;
+    }
     public void setTenNV(String tenNV) {
         this.tenNV = tenNV;
     }
-
-    public String getSoDienThoai() {
-        return soDienThoai;
-    }
-
     public void setSoDienThoai(String soDienThoai) {
         this.soDienThoai = soDienThoai;
     }
-
-    public String getChucVu() {
-        return chucVu;
-    }
-    public String getRole() {
-        return role;
-    }
-
-
 
     public void setChucVu(String chucVu) {
         this.chucVu = chucVu;
@@ -79,7 +71,6 @@ public class Employee {
     public void setPassWord(String passWord) {
         this.passWord = passWord;
     }
-
     public void setRole(String role) {
         this.role = role;
     }
@@ -90,3 +81,4 @@ public class Employee {
 
 
 }
+

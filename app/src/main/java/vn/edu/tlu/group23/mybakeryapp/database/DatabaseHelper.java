@@ -39,7 +39,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "VALUES ('NV002', 'Nhân viên Bán hàng', '0909000002', 'Nhân viên', 'staff', '123456', 'staff')");
 
         db.execSQL("INSERT INTO Employee (maNV, tenNV, soDienThoai, chucVu, userName, passWord, role) " +
-
                 "VALUES ('NV003', 'Nhân viên Làm bánh', '0909560002', 'Nhân viên', 'staff2', '123456', 'staff')");
 
         db.execSQL("INSERT INTO Employee (maNV, tenNV, soDienThoai, chucVu, userName, passWord, role) " +
@@ -123,9 +122,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COL_USERNAME = "userName";
     public static final String COL_PASSWORD = "passWord";
     public static final String COL_ROLE = "role";
-
-
     public static final String TABLE_SANPHAM = "sanpham";
+
     // Tên cột
     public static final String COL_HINHANH = "hinhAnh";
     public static final String COL_MASP = "maSP";

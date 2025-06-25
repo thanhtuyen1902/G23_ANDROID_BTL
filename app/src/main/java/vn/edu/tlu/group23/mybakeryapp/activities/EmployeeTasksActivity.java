@@ -83,6 +83,7 @@ public class EmployeeTasksActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_employee_tasks);
 
+
         //Xin quyền hiển thị thông báo
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             if (checkSelfPermission(android.Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
@@ -297,6 +298,14 @@ public class EmployeeTasksActivity extends AppCompatActivity {
     protected void onPause() {
         mapView.onPause();
         super.onPause();
+
+//        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+//            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+//            return insets;
+//        });
+
+
     }
 
     @Override
